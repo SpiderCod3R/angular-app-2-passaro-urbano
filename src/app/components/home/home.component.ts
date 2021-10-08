@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.ofertas = this.ofertasService.get_ofertas()
-    
   }
 
 }
