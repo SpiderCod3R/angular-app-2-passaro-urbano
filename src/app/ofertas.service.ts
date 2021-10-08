@@ -6,7 +6,7 @@ import { Oferta } from './shared/oferta.model';
 })
 export class OfertasService {
 
-  private ofertas: Array<Oferta> = [
+  public ofertas: Array<Oferta> = [
     {
       id: 1,
       categoria: "restaurante",
@@ -65,12 +65,17 @@ export class OfertasService {
   public getOfertas2(): Promise<Oferta[]>{
     return new Promise(( resolve, reject ) => {
       // algum tipo de processamento que ao finalizar chama a funcao resolve ou a funcao reject
-      let deu_certo = false
+      let deu_certo = true
       if(deu_certo) {
-        resolve(this.ofertas)
+        setTimeout( () => { resolve(this.ofertas) }, 3000)
       } else {
-        reject({ codigo_erro: '404', mensagem_erro: 'Lamentamos o Ocorrido o recurso não foi encontrado.' })
+        setTimeout( () => { reject({ codigo_erro: '404', mensagem_erro: 'Lamentamos o Ocorrido o recurso não foi encontrado.' }) }, 2000)
       }
+    }).
+    then( (ofertas: Array<Oferta>) => {
+      console.log("primeiro then");
+      
+      return ofertas
     })
   }
 }

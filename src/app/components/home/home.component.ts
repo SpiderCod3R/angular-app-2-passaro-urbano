@@ -9,7 +9,7 @@ import { Oferta } from 'src/app/shared/oferta.model';
   providers: [ OfertasService ]
 })
 export class HomeComponent implements OnInit {
-  public ofertas: Oferta[] | undefined
+  public ofertas!: Oferta[]
 
   constructor(private ofertasService: OfertasService) { }
 
@@ -17,11 +17,17 @@ export class HomeComponent implements OnInit {
     // this.ofertas = this.ofertasService.get_ofertas()
     this.ofertasService.
       getOfertas2().
-        then(
-          ( ofertas: Oferta[] ) => { this.ofertas = ofertas }
+        then( 
+          ( ofertas: Oferta[] ) => { 
+            console.log("A função resolve foi resolvida depois de 3 segundos");
+            this.ofertas = ofertas 
+          }
         ).
         catch(
-          ( resource: any ) => { console.log(resource) }
+          ( resource: any ) => { 
+            console.log("A função reject foi executada depois de 2 segundos");
+            console.log(resource) 
+          }
         )}
 
 }
