@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Oferta } from './shared/oferta.model';
 
@@ -5,6 +6,8 @@ import { Oferta } from './shared/oferta.model';
   providedIn: 'root'
 })
 export class OfertasService {
+
+  constructor(private httpClient: HttpClient) { }
 
   public ofertas: Oferta[] = [
     {
@@ -56,8 +59,6 @@ export class OfertasService {
     }
   ]
 
-  constructor() { }
-
   public get_ofertas(): Oferta[] {
     return this.ofertas
   }
@@ -81,6 +82,14 @@ export class OfertasService {
     then( (ofertas: Oferta[]) => {
       // Fazer outra tratativa
       console.log("Segundo Then");
+      return new Promise( (resolve2, reject2) => {
+        setTimeout( () => {
+          resolve2( ofertas )
+        }, 3000)
+      })
+    }).
+    then( (ofertas: any) => {
+      console.log("Terceiro Then executado apos 3 segundos pq estava aguardando uma promisse resolvida");
       
       return ofertas
     })
