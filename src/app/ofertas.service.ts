@@ -9,7 +9,7 @@ export class OfertasService {
   public get_ofertas(): Promise<Oferta[]> {
     // Efetuar um requisicao HTTP
     // Retornar um Promisse de Ofertas
-    return this.httpClient.get('http://localhost:5000/ofertas')
+    return this.httpClient.get('http://localhost:5000/ofertas?destaque=true')
       .toPromise()
       .then((resposta: any) => resposta )
   }
