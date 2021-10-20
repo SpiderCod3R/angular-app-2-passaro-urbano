@@ -6,7 +6,7 @@ import { Oferta } from './shared/oferta.model';
 })
 export class OfertasService {
 
-  public ofertas: Array<Oferta> = [
+  public ofertas: Oferta[] = [
     {
       id: 1,
       categoria: "restaurante",
@@ -58,7 +58,7 @@ export class OfertasService {
 
   constructor() { }
 
-  public get_ofertas(): Array<Oferta> {
+  public get_ofertas(): Oferta[] {
     return this.ofertas
   }
 
@@ -72,8 +72,15 @@ export class OfertasService {
         setTimeout( () => { reject({ codigo_erro: '404', mensagem_erro: 'Lamentamos o Ocorrido o recurso não foi encontrado.' }) }, 2000)
       }
     }).
-    then( (ofertas: Array<Oferta>) => {
-      console.log("primeiro then");
+    then( (ofertas: any) => {
+      // Fazer alguma tratativa
+      console.log("Primeiro Then");
+      
+      return ofertas
+    }).
+    then( (ofertas: Oferta[]) => {
+      // Fazer outra tratativa
+      console.log("Segundo Then");
       
       return ofertas
     })
