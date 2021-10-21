@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Oferta } from './shared/oferta.model';
 @Injectable({ providedIn: 'root' })
 export class OfertasService {
-
   constructor(private httpClient: HttpClient) { }
 
   public get_ofertas(): Promise<Oferta[]> {
@@ -14,7 +13,9 @@ export class OfertasService {
       .then((resposta: any) => resposta )
   }
 
-  // public getOfertas2(): Promise<Oferta[]>{
+  // Na versao mais atual são utilizadas mais Observables do que Promisses
+  // Promisses eram muito utilizadas na versao 4 do Angular
+  // public get_ofertas2(): Promise<Oferta[]>{
   //   return new Promise(( resolve, reject ) => {
   //     // algum tipo de processamento que ao finalizar chama a funcao resolve ou a funcao reject
   //     let deu_certo = true
@@ -24,7 +25,7 @@ export class OfertasService {
   //       setTimeout( () => { reject({ codigo_erro: '404', mensagem_erro: 'Lamentamos o Ocorrido o recurso não foi encontrado.' }) }, 2000)
   //     }
   //   }).
-  //   then( (ofertas: any) => {
+  //   then( (ofertas: Oferta[]) => {
   //     // Fazer alguma tratativa
   //     console.log("Primeiro Then");
       
@@ -39,7 +40,7 @@ export class OfertasService {
   //       }, 3000)
   //     })
   //   }).
-  //   then( (ofertas: any) => {
+  //   then( (ofertas: Oferta[]) => {
   //     console.log("Terceiro Then executado apos 3 segundos pq estava aguardando uma promisse resolvida");
       
   //     return ofertas
