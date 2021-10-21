@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { EntertainmentComponent } from './components/entertainment/entertainment.component';
+import { OfferComponent } from './components/offer/offer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EntertainmentComponent } from './components/entertainment/entertainment
     HomeComponent,
     FooterComponent,
     RestaurantsComponent,
-    EntertainmentComponent
+    EntertainmentComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,
