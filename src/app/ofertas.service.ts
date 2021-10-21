@@ -8,9 +8,17 @@ export class OfertasService {
   public get_ofertas(): Promise<Oferta[]> {
     // Efetuar um requisicao HTTP
     // Retornar um Promisse de Ofertas
-    return this.httpClient.get('http://localhost:5000/ofertas?destaque=true')
-      .toPromise()
-      .then((resposta: any) => resposta )
+    return this.httpClient.
+      get('http://localhost:5000/ofertas?destaque=true').
+      toPromise().
+      then((resposta: any) => resposta )
+  }
+
+  public get_ofertas_por_categoria(categoria: String): Promise<Oferta[]>{
+    return this.httpClient.
+      get(`http://localhost:5000/ofertas?categoria=${categoria}`).
+      toPromise().
+      then( ( resposta: any) => resposta)
   }
 
   // Na versao mais atual são utilizadas mais Observables do que Promisses
