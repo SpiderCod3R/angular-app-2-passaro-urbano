@@ -12,6 +12,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { EntertainmentComponent } from './components/entertainment/entertainment.component';
 import { OfferComponent } from './components/offer/offer.component';
+import { HowToComponent } from './components/offer/how-to/how-to.component';
+import { WhereStayComponent } from './components/offer/where-stay/where-stay.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { OfferComponent } from './components/offer/offer.component';
     FooterComponent,
     RestaurantsComponent,
     EntertainmentComponent,
-    OfferComponent
+    OfferComponent,
+    HowToComponent,
+    WhereStayComponent
   ],
   imports: [
     BrowserModule,
