@@ -21,37 +21,12 @@ export class OfertasService {
       then( ( resposta: any) => resposta)
   }
 
-  // Na versao mais atual são utilizadas mais Observables do que Promisses
-  // Promisses eram muito utilizadas na versao 4 do Angular
-  // public get_ofertas2(): Promise<Oferta[]>{
-  //   return new Promise(( resolve, reject ) => {
-  //     // algum tipo de processamento que ao finalizar chama a funcao resolve ou a funcao reject
-  //     let deu_certo = true
-  //     if(deu_certo) {
-  //       setTimeout( () => { resolve(this.ofertas) }, 3000)
-  //     } else {
-  //       setTimeout( () => { reject({ codigo_erro: '404', mensagem_erro: 'Lamentamos o Ocorrido o recurso não foi encontrado.' }) }, 2000)
-  //     }
-  //   }).
-  //   then( (ofertas: Oferta[]) => {
-  //     // Fazer alguma tratativa
-  //     console.log("Primeiro Then");
-      
-  //     return ofertas
-  //   }).
-  //   then( (ofertas: Oferta[]) => {
-  //     // Fazer outra tratativa
-  //     console.log("Segundo Then");
-  //     return new Promise( (resolve2, reject2) => {
-  //       setTimeout( () => {
-  //         resolve2( ofertas )
-  //       }, 3000)
-  //     })
-  //   }).
-  //   then( (ofertas: Oferta[]) => {
-  //     console.log("Terceiro Then executado apos 3 segundos pq estava aguardando uma promisse resolvida");
-      
-  //     return ofertas
-  //   })
-  // }
+  public get_ofertas_por_id(id: number): Promise<Oferta> {
+    return this.httpClient.
+      get(`http://localhost:5000/ofertas?id=${id}`).
+      toPromise().
+      then( ( resposta: any) => {
+        return resposta[0]
+      })
+  }
 }
