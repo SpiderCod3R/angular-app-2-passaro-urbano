@@ -11,21 +11,21 @@ export class OfertasService {
     // Efetuar um requisicao HTTP
     // Retornar um Promisse de Ofertas
     return this.httpClient.
-      get(`${API_URL}?destaque=true`).
+      get(`${API_URL}/ofertas?destaque=true`).
       toPromise().
       then((resposta: any) => resposta )
   }
 
   public get_ofertas_por_categoria(categoria: String): Promise<Oferta[]>{
     return this.httpClient.
-      get(`${API_URL}?categoria=${categoria}`).
+      get(`${API_URL}/ofertas?categoria=${categoria}`).
       toPromise().
       then( ( resposta: any) => resposta)
   }
 
   public get_ofertas_por_id(id: number): Promise<Oferta> {
     return this.httpClient.
-      get(`${API_URL}?id=${id}`).
+      get(`${API_URL}/ofertas?id=${id}`).
       toPromise().
       then( ( resposta: any) => {
         return resposta[0]
