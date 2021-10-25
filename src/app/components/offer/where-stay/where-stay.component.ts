@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OfertasService } from 'src/app/ofertas.service';
 
 @Component({
   selector: 'app-where-stay',
@@ -7,11 +8,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./where-stay.component.scss']
 })
 export class WhereStayComponent implements OnInit {
+  public ondeFica!: String
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private ofertaService: OfertasService) { }
 
   ngOnInit(): void {
-    console.log("ID DA ROTA PAI: ", this.route.parent?.snapshot.params['id'])
+    this.ofertaService.
+    get_onde_fica_por_id(this.route.parent?.snapshot.params['id']).
+      then( (resposta: String) => {
+        this.ondeFica = resposta
+      } )
   }
 
 }
