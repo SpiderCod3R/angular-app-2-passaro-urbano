@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-how-to',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HowToComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log("ID DA ROTA PAI: ", this.route.parent?.snapshot.params['id'])
   }
 
 }
