@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Oferta } from 'src/app/shared/oferta.model';
 import { OfertasService } from '../../ofertas.service'
 
+import { Observable, interval, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-offer',
@@ -21,5 +22,18 @@ export class OfferComponent implements OnInit {
       then( (oferta: Oferta) => {
         this.oferta = oferta
       })
+    
+    // let tempo = interval(500)
+    // tempo.subscribe( ( intervalo: number ) => {
+    //   console.log(intervalo)
+    // })
+
+    // Observable (Observavel)
+    let meuObservableTeste = new Observable(( observer: Observer<String> ) => {
+      observer.next('primeiro evendo da stream')
+    })
+
+    // Observable (Observador)
+    meuObservableTeste.subscribe( ( resultado: any ) => console.log(resultado) )
   }
 }
