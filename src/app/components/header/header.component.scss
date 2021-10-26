@@ -2,6 +2,10 @@
   background: #006ACB
 }
 
+.fixed-top {
+  background-color: #FFF !important;
+}
+
 .nav-link {
   color: #C1E4FF;
 
@@ -12,7 +16,7 @@
 
 
 .banner {
-  margin-top: 130px;
+  margin-top: 120px;
 
   img {
     width: 100%;
@@ -22,4 +26,9 @@
 
 .active {
   color: #FFF 
+}
+
+.cartStyle {
+  align-self: center;
+  text-align: right;
 }
