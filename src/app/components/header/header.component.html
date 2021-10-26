@@ -7,7 +7,10 @@
           </a>
         </div>
         <div class="col-4">
-          <input type="text" class="form-control" placeholder="Pesquise alguma oferta.">
+          <input type="text" 
+            class="form-control" 
+            placeholder="Pesquise alguma oferta."
+            (keyup)="pesquisa($event)">
         </div>
         <div class="col-3 cartStyle">
           <a a href="#"><img src="/assets/carrinho.png" /></a>
