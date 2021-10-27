@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import {} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { API_URL } from './app.api';
 @Injectable({ providedIn: 'root' })
 export class OfertasService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient ) { }
 
   // Efetuar um requisicao HTTP
   // Retornar um Promisse de Ofertas
@@ -18,7 +19,7 @@ export class OfertasService {
     return this.httpClient.
       get(`${API_URL}/ofertas?destaque=true`).
       toPromise().
-      then((resposta: any) => resposta )
+      then( (resposta: any) => resposta )
   }
 
   public get_ofertas_por_categoria(categoria: String): Promise<Oferta[]>{
@@ -57,8 +58,26 @@ export class OfertasService {
     return this.httpClient.
       get(`${API_URL}/ofertas?descricao_oferta_like=${termo}`).
       pipe( 
-        retry(10),
+        retry(10), 
         map( (resposta: any) => resposta) 
       )
   }
+
+  // Nas versoes Anteriores como a Angular 4 O uso de 
+  // Response era e ainda é utilizado
+  // import { Http, Response } from '@angular/http'
+  // import { Observable } from 'rxjs/Observable';
+  //
+  // import 'rxjs/add/operator/toPromisse';
+  // import 'rxjs/add/operator/map';
+  // import 'rxjs/add/operator/retry';
+  //
+  // constructor(private http: Http) { }
+  //
+  // public pesquisa_ofertas(termo: String): Observable<Oferta[]> {
+  //   return this.http.
+  //     get(`${API_URL}/ofertas?descricao_oferta_like=${termo}`).
+  //       retry(10). 
+  //       map( (resposta: Response) => resposta) 
+  // }
 }
