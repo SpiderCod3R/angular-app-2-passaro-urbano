@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { OfertasService } from 'src/app/ofertas.service';
 import { Oferta } from 'src/app/shared/oferta.model';
 
 // import 'rxjs/add/operator/switchMap' FUNCIONA NO ANGULAR 4
-import { switchMap } from 'rxjs/operators';
+// import 'rxjs/add/operator/of' FUNCIONA NO ANGULAR 4
+// import 'rxjs/add/operator/debounceTime' FUNCIONA NO ANGULAR 4
+
+import { debounceTime, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +24,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.ofertas = this.subjectPesquisa.
       pipe(
+        debounceTime(1000), // executa a ação do switchMap depois de 1ms
         switchMap((termo: string) => {
+          if(termo.trim() === '') {
+            // retornar um Observable<Oferta[]> Vazio
+            return of<Oferta[]>([])
+          }
+
           return this.ofertaService.pesquisa_ofertas(termo)
         })
       )
