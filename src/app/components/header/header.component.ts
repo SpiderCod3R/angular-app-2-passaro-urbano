@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public pesquisa(evento: Event): void {
-    console.log((<HTMLInputElement>evento.target).value)
+  public pesquisa(termoDaPesquisa: String): void {
+    // console.log((<HTMLInputElement>evento.target).value)
+    console.log(termoDaPesquisa)
   }
 
 }
