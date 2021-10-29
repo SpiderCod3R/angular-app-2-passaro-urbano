@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule  } from '@angular/common/http'
-
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app-routes'
 
@@ -14,6 +13,12 @@ import { EntertainmentComponent } from './components/entertainment/entertainment
 import { OfferComponent } from './components/offer/offer.component';
 import { HowToComponent } from './components/offer/how-to/how-to.component';
 import { WhereStayComponent } from './components/offer/where-stay/where-stay.component';
+
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt, 'pt-BR')
+
 
 @NgModule({
   declarations: [
@@ -32,7 +37,7 @@ import { WhereStayComponent } from './components/offer/where-stay/where-stay.com
     RouterModule.forRoot(ROUTES),
     HttpClientModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

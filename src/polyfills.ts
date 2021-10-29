@@ -63,3 +63,7 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// No Angular 4 Funciona
+// import 'intl'
+// import 'intl/locale-data/jsonp/pt-Br'
