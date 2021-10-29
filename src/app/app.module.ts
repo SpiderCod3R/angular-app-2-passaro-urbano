@@ -19,6 +19,7 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt, 'pt-BR')
 
+import { DescricaoReduzida } from './utils/descricao-reduzida.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ registerLocaleData(localePt, 'pt-BR')
     EntertainmentComponent,
     OfferComponent,
     HowToComponent,
-    WhereStayComponent
+    WhereStayComponent,
+    DescricaoReduzida
   ],
   imports: [
     BrowserModule,
