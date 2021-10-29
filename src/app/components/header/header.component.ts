@@ -8,7 +8,7 @@ import { Oferta } from 'src/app/shared/oferta.model';
 // import 'rxjs/add/operator/debounceTime' FUNCIONA NO ANGULAR 4
 // import 'rxjs/add/operator/distinctUntilChanged' FUNCIONA NO ANGULAR 4
 
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -32,10 +32,13 @@ export class HeaderComponent implements OnInit {
             // retornar um Observable<Oferta[]> Vazio
             return of<Oferta[]>([])
           }
-
           return this.ofertaService.pesquisa_ofertas(termo)
+        }),
+        catchError( (error: any) => {
+          return of<Oferta[]>([])
         })
       )
+
       this.ofertas.subscribe( (ofertas: Oferta[]) => {
         console.log(ofertas)
       })
