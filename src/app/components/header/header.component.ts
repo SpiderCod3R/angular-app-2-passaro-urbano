@@ -18,6 +18,8 @@ import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/
 export class HeaderComponent implements OnInit {
 
   public ofertas!: Observable<Oferta[]>
+  public listaOfertas!: Array<Oferta>
+
   private subjectPesquisa: Subject<string> = new Subject()
 
   constructor(private ofertaService: OfertasService) { }
@@ -26,7 +28,7 @@ export class HeaderComponent implements OnInit {
     this.ofertas = this.subjectPesquisa.
       pipe(
         debounceTime(1000), // executa a ação do switchMap depois de 1ms
-        distinctUntilChanged(),
+        distinctUntilChanged(), // para fazer pesquisas distintas
         switchMap((termo: string) => {
           if(termo.trim() === '') {
             // retornar um Observable<Oferta[]> Vazio
@@ -40,7 +42,7 @@ export class HeaderComponent implements OnInit {
       )
 
       this.ofertas.subscribe( (ofertas: Oferta[]) => {
-        console.log(ofertas)
+        this.listaOfertas = ofertas
       })
   }
 
