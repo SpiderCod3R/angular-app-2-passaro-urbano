@@ -3,12 +3,14 @@ import { Observable, of, Subject } from 'rxjs';
 import { OfertasService } from 'src/app/ofertas.service';
 import { Oferta } from 'src/app/shared/oferta.model';
 
-// import 'rxjs/add/operator/switchMap' FUNCIONA NO ANGULAR 4
-// import 'rxjs/add/operator/of' FUNCIONA NO ANGULAR 4
-// import 'rxjs/add/operator/debounceTime' FUNCIONA NO ANGULAR 4
-// import 'rxjs/add/operator/distinctUntilChanged' FUNCIONA NO ANGULAR 4
+// import '../../utils/rxjs.extensions' // No Angular 4
 
-import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+
+import { catchError, 
+  debounceTime, 
+  distinctUntilChanged, 
+  switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-header',
