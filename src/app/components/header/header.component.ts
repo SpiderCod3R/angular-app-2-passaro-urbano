@@ -6,8 +6,9 @@ import { Oferta } from 'src/app/shared/oferta.model';
 // import 'rxjs/add/operator/switchMap' FUNCIONA NO ANGULAR 4
 // import 'rxjs/add/operator/of' FUNCIONA NO ANGULAR 4
 // import 'rxjs/add/operator/debounceTime' FUNCIONA NO ANGULAR 4
+// import 'rxjs/add/operator/distinctUntilChanged' FUNCIONA NO ANGULAR 4
 
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
     this.ofertas = this.subjectPesquisa.
       pipe(
         debounceTime(1000), // executa a ação do switchMap depois de 1ms
+        distinctUntilChanged(),
         switchMap((termo: string) => {
           if(termo.trim() === '') {
             // retornar um Observable<Oferta[]> Vazio
