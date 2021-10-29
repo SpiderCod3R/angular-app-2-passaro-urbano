@@ -13,7 +13,7 @@
             #termoDaPesquisa
             (keyup)="pesquisa(termoDaPesquisa.value)">
           <ul class="list-group" style="position: absolute;">
-            <li *ngFor="let oferta of listaOfertas" class="list-group-item">{{ oferta.titulo }}</li>
+            <li *ngFor="let oferta of listaOfertas" class="list-group-item">{{ oferta.titulo | titlecase }}</li>
           </ul>
         </div>
 
