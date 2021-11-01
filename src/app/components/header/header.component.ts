@@ -55,4 +55,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  public limpa_pesquisa(): void {
+    this.subjectPesquisa.next('')
+  }
+
 }
