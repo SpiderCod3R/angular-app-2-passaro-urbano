@@ -20,7 +20,6 @@ import { catchError,
 export class HeaderComponent implements OnInit {
 
   public ofertas!: Observable<Oferta[]>
-  public listaOfertas!: Array<Oferta>
 
   private subjectPesquisa: Subject<string> = new Subject()
 
@@ -42,10 +41,6 @@ export class HeaderComponent implements OnInit {
           return of<Oferta[]>([])
         })
       )
-
-      this.ofertas.subscribe( (ofertas: Oferta[]) => {
-        this.listaOfertas = ofertas
-      })
   }
 
   public pesquisa(termoDaPesquisa: string): void {
