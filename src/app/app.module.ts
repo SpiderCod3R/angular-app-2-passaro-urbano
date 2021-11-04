@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePt, 'pt-BR')
 
 import { DescricaoReduzida } from './utils/descricao-reduzida.pipe';
+import { PurchaseOrderComponent } from './components/purchase-order/purchase-order.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DescricaoReduzida } from './utils/descricao-reduzida.pipe';
     OfferComponent,
     HowToComponent,
     WhereStayComponent,
-    DescricaoReduzida
+    DescricaoReduzida,
+    PurchaseOrderComponent
   ],
   imports: [
     BrowserModule,

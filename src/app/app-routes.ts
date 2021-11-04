@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HowToComponent } from './components/offer/how-to/how-to.component';
 import { OfferComponent } from './components/offer/offer.component';
 import { WhereStayComponent } from './components/offer/where-stay/where-stay.component';
+import { PurchaseOrderComponent } from './components/purchase-order/purchase-order.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 
 export const ROUTES: Routes = [
@@ -19,5 +20,6 @@ export const ROUTES: Routes = [
       { path: 'onde-fica', component: WhereStayComponent },
     ]
   },
+  { path:'ordem-compra', component: PurchaseOrderComponent },
 ];
 
